@@ -5,7 +5,7 @@ import ProductPrice from "./product-price";
 
 const ProductCard = ({ product }: { product: any }) => {
   return (
-    <Card className="w-full max-w-sm">
+    <Card className="w-full max-w-sm ">
       <CardHeader className="p-0 items-center">
         <Link href={`/product/${product.slug}`}>
           <Image
