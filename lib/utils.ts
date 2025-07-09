@@ -40,3 +40,16 @@ export function formatError(error: any) {
       : JSON.stringify(error.message);
   }
 }
+
+// Round number to 2 decimal places
+export function round2(value: number | string) {
+  if (typeof value === "number") {
+    // Epsilon ensures that number is correctly rounded to a whole number
+    return Math.round((value + Number.EPSILON) * 100) / 100;
+  } else if (typeof value === "string") {
+    // Epsilon ensures that number is correctly rounded to a whole number
+    return Math.round((Number(value) + Number.EPSILON) * 100) / 100;
+  } else {
+    throw new Error("Value is not a number or string");
+  }
+}
