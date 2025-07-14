@@ -25,6 +25,8 @@ import { shippingAddressDefaultValues } from "@/lib/constants";
 const ShippingAddressForm = ({ address }: { address: ShippingAddress }) => {
   const router = useRouter();
 
+  // Calling the use form hook with the shipping address schema
+  // zodResolver is used for validation
   const form = useForm<z.infer<typeof shippingAddressSchema>>({
     resolver: zodResolver(shippingAddressSchema),
     defaultValues: address || shippingAddressDefaultValues,
