@@ -125,6 +125,7 @@ export const config = {
       }
 
       // Handle session updates
+      // This is for when user is updating their profile
       if (session?.user.name && trigger === "update") {
         token.name = session.user.name;
       }
