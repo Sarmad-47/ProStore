@@ -52,12 +52,15 @@ const DeleteDialog = ({
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel className="cursor-pointer">
+            Cancel
+          </AlertDialogCancel>
           <Button
             variant="destructive"
             size="sm"
             disabled={isPending}
             onClick={handleDeleteClick}
+            className="cursor-pointer"
           >
             {isPending ? "Deleting..." : "Delete"}
           </Button>
