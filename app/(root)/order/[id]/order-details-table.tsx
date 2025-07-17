@@ -28,15 +28,18 @@ import {
   updateOrderToPaidCOD,
   deliverOrder,
 } from "@/lib/actions/order.actions";
+import StripePayment from "./stripe-payment";
 
 const OrderDetailsTable = ({
   order,
   paypalClientId,
   isAdmin,
+  stripeClientSecret,
 }: {
   order: Order;
   paypalClientId: string;
   isAdmin: boolean;
+  stripeClientSecret: string | null;
 }) => {
   // Destructure order properties
   const {
@@ -162,7 +165,7 @@ const OrderDetailsTable = ({
               <h2 className="text-xl pb-4">Shipping Address</h2>
               <p>{shippingAddress.fullName}</p>
               <p className="mb-2">
-                {shippingAddress.streetAddress}, {shippingAddress.city}
+                {shippingAddress.streetAddress}, {shippingAddress.city},
                 {shippingAddress.postalCode}, {shippingAddress.country}
               </p>
               {isDelivered ? (
@@ -245,6 +248,15 @@ const OrderDetailsTable = ({
                 </div>
               )}
 
+              {/* Stripe Payment */}
+              {!isPaid && paymentMethod === "Stripe" && stripeClientSecret && (
+                <StripePayment
+                  priceInCents={Number(order.totalPrice) * 100}
+                  orderId={order.id}
+                  clientSecret={stripeClientSecret}
+                />
+              )}
+
               {/* Cash On Delivery */}
               {isAdmin && !isPaid && paymentMethod === "CashOnDelivery" && (
                 <MarkAsPaidButton />
@@ -259,12 +271,3 @@ const OrderDetailsTable = ({
 };
 
 export default OrderDetailsTable;
-
-//               {/* Stripe Payment */}
-//               {!isPaid && paymentMethod === 'Stripe' && stripeClientSecret && (
-//                 <StripePayment
-//                   priceInCents={Number(order.totalPrice) * 100}
-//                   orderId={order.id}
-//                   clientSecret={stripeClientSecret}
-//                 />
-//               )}
