@@ -37,7 +37,7 @@ const Search = async () => {
           placeholder="Search..."
           className="md:w-[100px] lg:w-[300px]"
         />
-        <Button>
+        <Button className="cursor-pointer">
           <SearchIcon />
         </Button>
       </div>
