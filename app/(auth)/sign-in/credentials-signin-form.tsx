@@ -64,6 +64,20 @@ const CredentialsSignInForm = () => {
           <div className="text-center text-destructive">{data.message}</div>
         )}
 
+        <div className="mt-6 rounded-lg border border-border bg-muted p-4 text-sm">
+          <h2 className="mb-3 text-center font-semibold text-foreground">
+            Admin Login Credentials
+          </h2>
+          <div className="flex text-muted-foreground">
+            <span>Email:</span>
+            <span className="font-medium ml-1">admin@example.com</span>
+          </div>
+          <div className="flex text-muted-foreground">
+            <span>Password:</span>
+            <span className="font-medium ml-1">123456</span>
+          </div>
+        </div>
+
         <div className="text-sm text-center text-muted-foreground">
           Don&apos;t have an account?{" "}
           <Link href="/sign-up" target="_self" className="link">
